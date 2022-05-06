@@ -1,6 +1,7 @@
 const express = require("express");
 const connect = require("./configs/db");
 var cors = require("cors");
+require("dotenv").config();
 const app = express();
 const { body, validationResult } = require("express-validator");
 app.use(cors());
@@ -23,8 +24,8 @@ app.post(
 );
 
 app.use("/flat", flatController);
-
-app.listen(2424, async () => {
+const port = process.env.PORT || 2424;
+app.listen(port, async () => {
     try {
         await connect();
         console.log("listining on port 2424");
