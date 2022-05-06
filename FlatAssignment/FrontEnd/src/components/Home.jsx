@@ -17,6 +17,8 @@ import { Navbar } from "./Navbar";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Input from "@mui/material/Input";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 export const Home = () => {
     const [count, setCount] = React.useState(0);
@@ -101,68 +103,79 @@ export const Home = () => {
     };
 
     return (
-        <TableContainer component={Paper}>
+        <>
             <Navbar></Navbar>
-            <Input placeholder="Search by Block" onChange={searching}></Input>
-            <div></div>
-            <br />
-            <br />
-            <br />
-            <Stack direction="row" spacing={2}>
-                <Button onClick={() => handleSort()}>
-                    Sort  high to low
-                </Button>
-                <Button onClick={() => handlesort2()}>
-                    Sort  low to high
-                </Button>
-            </Stack>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Block</TableCell>
-                        <TableCell align="right">Block Num</TableCell>
-                        <TableCell align="right">Resident Name</TableCell>
-                        <TableCell align="right">Resident Gender</TableCell>
-                        <TableCell align="right">Edit</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {selector.map((row, i) => (
-                        <TableRow
-                            key={row.name}
-                            sx={{
-                                "&:last-child td, &:last-child th": {
-                                    border: 0,
-                                },
-                            }}
-                        >
-                            <TableCell component="th" scope="row" key={i}>
-                                {row.Block}
-                            </TableCell>
-                            <TableCell align="right" key={i + 1}>
-                                {row.Block_no}
-                            </TableCell>
-                            <TableCell align="right" key={i + 2}>
-                                {row.Name}
-                            </TableCell>
-                            <TableCell align="right" key={i + 3}>
-                                {row.Gender}
-                            </TableCell>
-                            <TableCell
-                                key={i + 4}
-                                align="right"
-                                onClick={() => getid(row._id)}
-                            >
-                                <Link key={i + 5} to="/specific">
-                                    View
-                                </Link>
-                            </TableCell>
+            <TableContainer
+                component={Paper}
+                sx={{ marginTop: 3, backgroundColor: "#F0FFC2" }}
+            >
+                <Input
+                    placeholder="Search by Block"
+                    onChange={searching}
+                ></Input>
+                <div></div>
+                <br />
+                <br />
+                <br />
+                <Stack direction="row" spacing={2}>
+                    <Button onClick={() => handleSort()}>
+                        Sort high to low
+                    </Button>
+                    <Button onClick={() => handlesort2()}>
+                        Sort low to high
+                    </Button>
+                </Stack>
+                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Block</TableCell>
+                            <TableCell align="right">Block Num</TableCell>
+                            <TableCell align="right">Resident Name</TableCell>
+                            <TableCell align="right">Resident Gender</TableCell>
+                            <TableCell align="right">Edit</TableCell>
                         </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-            <button>Pre</button>
-            <button>Next</button>
-        </TableContainer>
+                    </TableHead>
+                    <TableBody>
+                        {selector.map((row, i) => (
+                            <TableRow
+                                key={row.name}
+                                sx={{
+                                    "&:last-child td, &:last-child th": {
+                                        border: 0,
+                                    },
+                                }}
+                            >
+                                <TableCell component="th" scope="row" key={i}>
+                                    {row.Block}
+                                </TableCell>
+                                <TableCell align="right" key={i + 1}>
+                                    {row.Block_no}
+                                </TableCell>
+                                <TableCell align="right" key={i + 2}>
+                                    {row.Name}
+                                </TableCell>
+                                <TableCell align="right" key={i + 3}>
+                                    {row.Gender}
+                                </TableCell>
+                                <TableCell
+                                    key={i + 4}
+                                    align="right"
+                                    onClick={() => getid(row._id)}
+                                >
+                                    <Link key={i + 5} to="/specific">
+                                        View
+                                    </Link>
+                                </TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+                <Button variant="contained" startIcon={<ArrowBackIosIcon />}>
+                    Pre
+                </Button>
+
+                <Button variant="contained"endIcon={<ArrowForwardIosIcon />}>Next</Button>
+            </TableContainer>
+        </>
     );
 };
