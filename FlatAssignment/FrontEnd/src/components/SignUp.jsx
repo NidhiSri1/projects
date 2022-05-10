@@ -21,11 +21,11 @@ export const SignUp = () => {
     const onSubmitting = (e) => {
         e.preventDefault();
         axios
-            .post("http://localhost:2424/register", signup)
+            .post("http://managinigflats.herokuapp/register", signup)
             .then(({ data }) => {
                 alert("User create - Login");
             })
-            .catch((err) => alert("User Already exist"));
+            .catch((err) => console.log(err));
     };
 
     return (

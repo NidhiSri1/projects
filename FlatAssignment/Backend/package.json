@@ -1,7 +1,6 @@
 {
     "name": "assignmentbackend",
     "version": "1.0.0",
-    "description": "",
     "main": "index.js",
     "scripts": {
         "test": "node index.js"
@@ -25,5 +24,7 @@
         "express-validator": "^6.14.0",
         "jsonwebtoken": "^8.5.1",
         "mongoose": "^6.2.1"
-    }
+    },
+    "devDependencies": {},
+    "description": ""
 }
